@@ -73,7 +73,7 @@ class _HomePageState extends State<HomePage> {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.brightness_5),
-          title: Text('Mapas'),
+          title: Text('Direcciones'),
         ),
       ],
     );
@@ -84,24 +84,21 @@ class _HomePageState extends State<HomePage> {
 
     // http://google.com
     //  geo:53.338201323579455,-6.258963493908709
-    String futureString ="https://google.com";
+    String futureString ;
     // String futureString ="";
 
-    // try{
-    // futureString =  await new QRCodeReader().scan();
-    // }catch(e){
-    //   futureString = e.toString();
-    // }
+    try{
+    futureString =  await new QRCodeReader().scan();
+    }catch(e){
+      futureString = e.toString();
+    }
 
     if (futureString != null){
       final scan = ScanModel(valor:futureString);
       scansbloc.agregarscan(scan);
 
 
-    if (futureString != null){
-          final scan2 = ScanModel(valor:'geo:53.338201323579455,-6.258963493908709');
-          scansbloc.agregarscan(scan2);
-    }
+ 
 
       if (Platform.isIOS){
         Future.delayed( Duration (  milliseconds: 750), (){
